@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './Home/Home';
-import { Movies } from './Movies/Movies';
+//import { Movies } from './Movies/Movies';
 
 export const App = () => {
   return (

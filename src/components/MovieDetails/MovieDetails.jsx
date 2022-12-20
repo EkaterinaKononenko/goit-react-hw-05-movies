@@ -1,4 +1,4 @@
-import { Cast } from "components/Cast/Cast";
+/*import { Cast } from "components/Cast/Cast";
 
 export const MovieDetails = () => {
   return (
@@ -6,4 +6,4 @@ export const MovieDetails = () => {
       <div></div>
     </div>
   );
-};
+};*/
