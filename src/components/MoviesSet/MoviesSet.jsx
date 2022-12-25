@@ -1,19 +1,26 @@
+import MovieItem from "components/MovieItem/MovieItem";
 
- /*const MovieSet = ({ movies }) => {
-    console.log(movies);
-    return (
-        <ul>
-            {movies.map((movie) => {
-                return (
-                  <li
-                    key={movie.id}
-                    title={movie.title}
-                    vote={movie.vote_average}
-                  ></li>
-                );
-            })}
-     </ul>
- )
-}
+const MovieSet = ({ movies }) => {
+  return (
+    <ul>
+      {movies.map((movie ) => {
+        return (
+          <MovieItem
+            key={movie.id}
+            id={movie.id}
+            src={movie.poster_path}
+            title={movie.title}
+            vote={movie.vote_average}
+          >
+            {movie.title}
+          </MovieItem>
+        );
+      })}
+    </ul>
+  );
+};
 
-export default MovieSet;*/
+
+
+export default MovieSet;
+

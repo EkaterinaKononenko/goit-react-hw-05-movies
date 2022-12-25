@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import {useSearchParams } from 'react-router-dom';
 import getSearchMovies from 'API/getSearchMovies';
 import { ToastContainer, toast } from 'react-toastify';
+import MovieSet from 'components/MoviesSet/MoviesSet';
 import 'react-toastify/dist/ReactToastify.css';
  
 
@@ -70,23 +71,10 @@ export const Movies = () => {
         </label>
         <button type="submit">Search</button>
       </form>
+     {query && <MovieSet movies={movies}/>}
     </div>
   );
       }
 
 export default Movies;
 
-/*const Movies = () => {
-  return (
-    <main>
-      <h1>Welcome</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-        laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-        voluptatum voluptate.
-      </p>
-    </main>
-  );
-};
-
-export default Movies;*/

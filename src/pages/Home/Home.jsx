@@ -1,39 +1,38 @@
 
-/*import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import getMovieTranding from "API/getMovieTranding";
 import MovieSet from "components/MoviesSet/MoviesSet";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+ 
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log('Here will be request {setMovies}');
-    getMovieTranding().then(setMovies);
-  }, [setMovies]);
-
+    getMovieTranding()
+      .then(response => {
+        if (response.results.length === 0) {
+          return toast.warn("We couldn't find result on your request.", {
+            position: 'top-right',
+            autoClose: 3000,
+            theme: 'colored',
+          });
+        }
+        setMovies(response.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <main>
-        <div>Trending today</div>
-        <MovieSet movies={movies} />
-        <Outlet />
+      <ToastContainer />
+      <div>Trending today</div>
+      <MovieSet movies={movies} />
     </main>
   );
 }
 
-export default Home;*/
-
-    const Home = () => {
-       return (
-         <main>
-           <h1>Welcome</h1>
-           <p>
-             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-             laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-             voluptatum voluptate.
-           </p>
-         </main>
-       );
-};
-     export default Home;
+export default Home;
