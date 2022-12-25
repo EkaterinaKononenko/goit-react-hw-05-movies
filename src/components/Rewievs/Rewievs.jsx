@@ -1,4 +1,4 @@
- /*const Cast = () => {
+/*const Rewievs = () => {
   return (
     <section>
       <h2>Our mission</h2>
@@ -19,4 +19,4 @@
   );
 };
 
-export default Cast;*/
+export default Rewievs;*/

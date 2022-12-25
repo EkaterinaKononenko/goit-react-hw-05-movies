@@ -1,8 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
-import { Home } from './Home/Home';
-//import { Movies } from './Movies/Movies';
+import { Route, Routes} from 'react-router-dom';
+import Home  from '../pages/Home/Home';
+import  {Movies}  from '../pages/Movies/Movies';
+//import MovieSet from './MoviesSet/MoviesSet';
+import NotFound from '../pages/NotFound/NotFound';
+//import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import SharedLayout from './SharedLayout/SharedLayout';
 
-export const App = () => {
+
+
+const App = () => {
   return (
     <div
       style={{
@@ -15,8 +21,14 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />}></Route>
+        </Route>
+        <Route path="movies" element={<Movies />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
   );
 };
+
+export default App;
