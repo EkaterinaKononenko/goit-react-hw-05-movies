@@ -14,11 +14,11 @@ const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '100hv',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
+        fontSize: 16,
         color: '#010101',
       }}
     >

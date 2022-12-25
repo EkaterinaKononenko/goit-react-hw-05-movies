@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
  
 
 export const Movies = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams([]);
 
@@ -20,17 +20,20 @@ export const Movies = () => {
       return;
     }
     const searchRes = searchParams.get('searchMovie');
-    getSearchMovies(searchRes).then(response => {
-      if (response.results.length === 0) {
-        return toast.warn("We couldn't find result on your request.", {
-          position: 'top-right',
-          autoClose: 3000,
-          theme: 'colored',
-        });
-      } setMovies(response.results);
-    }).catch(error => {
-      console.log(error);
-    })
+    getSearchMovies(searchRes)
+      .then(response => {
+        if (response.results.length === 0) {
+          return toast.warn("We couldn't find result on your request.", {
+            position: 'top-right',
+            autoClose: 3000,
+            theme: 'colored',
+          });
+        }
+        setMovies(response.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, [query, searchParams])
 
    const handleChange = e => {
@@ -71,7 +74,7 @@ export const Movies = () => {
         </label>
         <button type="submit">Search</button>
       </form>
-     {query && <MovieSet movies={movies}/>}
+      <MovieSet movies={movies} />
     </div>
   );
       }

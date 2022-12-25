@@ -8,7 +8,7 @@ const PAGE = 1;
 const getSearchMovies = async (searchMovie) => {
   try {
     const response = await axios.get(
-      `${URL}3/search/movie?api_key=${KEY}&query=${searchMovie}&language=${LANGUAGE}&page=${PAGE}`
+      `${URL}3/search/movie?api_key=${KEY}&query=${searchMovie}&language=${LANGUAGE}&page=${PAGE}&include_adult=false`
     );
     return response.data;
   } catch (error) {

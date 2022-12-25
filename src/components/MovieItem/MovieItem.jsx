@@ -7,7 +7,7 @@ const MovieItem = ({ id, src, title, vote }) => {
     return (
       <li key={id} title={title}>
         <Link to={`${id}`} state={{ from: location }}></Link>
-        <img src={pathname + src} alt={title} />
+        <img src={pathname + src} alt={title} width="10" />
         <h1>{title}</h1>
         <p>User score:{vote}</p>
       </li>
@@ -15,3 +15,4 @@ const MovieItem = ({ id, src, title, vote }) => {
 }
 
 export default MovieItem;
+
