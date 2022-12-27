@@ -1,4 +1,4 @@
-/*import axios from 'axios';
+import axios from 'axios';
 
 const URL = 'https://api.themoviedb.org/';
 const KEY = 'd912e4e6ac5ac1e34c6318ab6e2c9716';
@@ -12,4 +12,4 @@ const getMoviesDetails = async id => {
   }
 };
 
-export default getMoviesDetails;*/
+export default getMoviesDetails;
