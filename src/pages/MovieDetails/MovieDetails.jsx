@@ -7,7 +7,6 @@ const MovieDetails = ({
   original_title,
   genres,
   overview,
-  poster_path,
   vote_average,
 }) => {
   const { id } = useParams();

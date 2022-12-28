@@ -27,6 +27,8 @@ const Home = () => {
       });
   }, []);
 
+  console.log(movies)
+
   return (
     <main>
       <ToastContainer />
