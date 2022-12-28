@@ -18,11 +18,11 @@ const MovieItem = ({ id, src, title, vote }) => {
 
 export default MovieItem;
 
- MovieItem.propTypes = {
+MovieItem.propTypes = {
 
-       id: PropTypes.number.isRequired,
-       title: PropTypes.string.isRequired,
-       vote: PropTypes.number.isRequired,
- };
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  vote: PropTypes.number.isRequired,
+}
 
 
