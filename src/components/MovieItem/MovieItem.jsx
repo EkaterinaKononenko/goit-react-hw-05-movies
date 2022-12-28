@@ -1,4 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const MovieItem = ({ id, src, title, vote }) => {
   const pathname = 'https://image.tmdb.org/t/p/w500';
@@ -16,4 +17,12 @@ const MovieItem = ({ id, src, title, vote }) => {
 }
 
 export default MovieItem;
+
+ MovieItem.propTypes = {
+
+       id: PropTypes.number.isRequired,
+       title: PropTypes.string.isRequired,
+       vote: PropTypes.number.isRequired,
+ };
+
 

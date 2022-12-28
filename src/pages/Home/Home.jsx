@@ -4,6 +4,7 @@ import getMovieTranding from "API/getMovieTranding";
 import MovieSet from 'components/MoviesSet/MovieSet';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
  
 
@@ -39,3 +40,9 @@ const Home = () => {
 }
 
 export default Home;
+
+  Home.propTypes = {
+    movies: PropTypes.arrayOf(
+      PropTypes.shape({})
+    ),
+  };

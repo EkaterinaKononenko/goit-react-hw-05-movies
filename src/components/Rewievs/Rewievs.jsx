@@ -3,6 +3,7 @@ import getMovieReviews from "API/getMovieReviews";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from 'prop-types';
 
      
 
@@ -42,4 +43,14 @@ const Review = () => {
        );
      };
 
-     export default Review;
+export default Review;
+     
+    Review.propTypes = {
+      reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          author: PropTypes.string.isRequired,
+          content: PropTypes.string.isRequired,
+        })
+      ),
+    };

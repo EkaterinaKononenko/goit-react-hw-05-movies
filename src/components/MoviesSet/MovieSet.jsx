@@ -1,18 +1,19 @@
 import MovieItem from "components/MovieItem/MovieItem";
+import PropTypes from 'prop-types';
 
 const MovieSet = ({ movies }) => {
   return (
     <ul>
-      {movies.map((movie ) => {
+      {movies.map(({ id, poster_path, title, vote_average }) => {
         return (
           <MovieItem
-            key={movie.id}
-            id={movie.id}
-            src={movie.poster_path}
-            title={movie.title}
-            vote={movie.vote_average}
+            key={id}
+            id={id}
+            src={poster_path}
+            title={title}
+            vote={vote_average}
           >
-            {movie.title}
+            {title}
           </MovieItem>
         );
       })}
@@ -20,6 +21,15 @@ const MovieSet = ({ movies }) => {
   );
 };
 
+  MovieSet.propTypes = {
+    movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        vote_average: PropTypes.number.isRequired,
+      })
+    ),
+  };
 
 
 export default MovieSet;

@@ -3,6 +3,7 @@ import getMovieCredits from "API/getMovieCredits";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from 'prop-types';
 
      
 
@@ -23,7 +24,7 @@ const Cast = () => {
 
          console.log(cast);
 
-         if(!cast){return (<p>Sorry, we don't have any review</p>)}
+         if(!cast){return (<p>Sorry, we don't have any informations</p>)}
          
        return (
          <div>
@@ -45,5 +46,15 @@ const Cast = () => {
 
      export default Cast;
 
-     
+     Cast.propTypes = {
+       cast: PropTypes.arrayOf(
+         PropTypes.shape({
+           id: PropTypes.number.isRequired,
+           caracter: PropTypes.string.isRequired,
+           name: PropTypes.string.isRequired,
+           profile_path: PropTypes.string.isRequired,
+         })
+       ),
+     };
+
  

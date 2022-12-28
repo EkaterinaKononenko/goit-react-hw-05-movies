@@ -3,24 +3,26 @@ import { NavLink, Outlet, useParams, useNavigate, useLocation } from 'react-rout
 import getMoviesDetails from 'API/getMoviesDetails';
 import { useState, useEffect } from 'react';
 
+
 const MovieDetails = ({
   original_title,
+  poster_path,
   genres,
   overview,
   vote_average,
 }) => {
-  const { id } = useParams();
+  const { id} = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-
-   useEffect(() => {
-    getMoviesDetails(id)
-      .then(setMovie)
-      .catch(error => {
-        console.log(error);
-      });
-  }, [id]);
+  
+    useEffect(() => {
+      getMoviesDetails(id)
+        .then(setMovie)
+        .catch(error => {
+          console.log(error);
+        });
+    }, [id]);
   
   if (!movie) {
     return null;
@@ -47,7 +49,7 @@ const MovieDetails = ({
           <NavLink to="cast">CAST</NavLink>
         </li>
         <li>
-          <NavLink to="rewievs" >REWIEVS</NavLink>
+          <NavLink to="rewievs">REWIEVS</NavLink>
         </li>
       </ul>
       <Outlet />
@@ -57,7 +59,6 @@ const MovieDetails = ({
 
 export default MovieDetails;
 
-
-  
+    
 
 

@@ -5,6 +5,7 @@ import getSearchMovies from 'API/getSearchMovies';
 import { ToastContainer, toast } from 'react-toastify';
 import MovieSet from 'components/MoviesSet/MovieSet';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
  
 
 export const Movies = () => {
@@ -81,3 +82,6 @@ export const Movies = () => {
 
 export default Movies;
 
+ Movies.propTypes = {
+   movies: PropTypes.arrayOf(PropTypes.shape({})),
+ };
