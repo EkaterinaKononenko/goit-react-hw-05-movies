@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from "react";
 import getMovieTranding from "API/getMovieTranding";
-import MovieSet from "components/MoviesSet/MoviesSet";
+import MovieSet from 'components/MoviesSet/MovieSet';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
  
 
 const Home = () => {

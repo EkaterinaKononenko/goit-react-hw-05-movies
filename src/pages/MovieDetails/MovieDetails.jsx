@@ -20,7 +20,7 @@ const MovieDetails = ({
       .then(setMovie)
       .catch(error => {
         console.log(error);
-      })
+      });
   }, [id]);
   
   if (!movie) {
@@ -45,10 +45,10 @@ const MovieDetails = ({
       <p>{genres}</p>
       <ul>
         <li>
-          <NavLink to="cast">Read about cast</NavLink>
+          <NavLink to="cast">CAST</NavLink>
         </li>
         <li>
-          <NavLink to="rewiews">Get to know the team</NavLink>
+          <NavLink to="rewievs" >REWIEVS</NavLink>
         </li>
       </ul>
       <Outlet />

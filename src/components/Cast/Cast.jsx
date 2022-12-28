@@ -1,14 +1,46 @@
 
-  const Cast = () => {
+import getMovieCredits from 'API/getMovieReviews';
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+     
+
+const Cast = () => {
+        const { id } = useParams();
+         const [actors, setCast] = useState([]);
+         
+          useEffect(() => {
+            getMovieCredits(id)
+              .then(response => setCast(response.cast))
+              .catch(error => {
+                console.log(error);
+              });
+          }, [id]);
+
+          console.log(actors);
+         if (!actors) {
+           return <p>Sorry, we don't have any information</p>;
+         }
+         
        return (
-         <main>
-           <h1>Welcome</h1>
-           <p>
-             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-             laboriosam placeat incidunt rem illum animi nemo quibusdam quia
-             voluptatum voluptate.
-           </p>
-         </main>
+         <div>
+           <p>ACTORS</p>
+           <ul>
+             {actors.map(({ id, caracter, name, imgUrl }) => {
+               return (
+                 <li key={id}>
+                   <h2>{caracter}</h2>
+                   <p>{name}</p>
+                   <img src={imgUrl} alt="actor" />
+                 </li>
+               );
+             })}
+           </ul>
+         </div>
        );
-};
-     export default Cast;
+     };
+
+export default Cast;
+     
+ 

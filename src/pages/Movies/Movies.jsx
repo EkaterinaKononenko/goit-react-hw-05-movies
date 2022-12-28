@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import {useSearchParams } from 'react-router-dom';
 import getSearchMovies from 'API/getSearchMovies';
 import { ToastContainer, toast } from 'react-toastify';
-import MovieSet from 'components/MoviesSet/MoviesSet';
+import MovieSet from 'components/MoviesSet/MovieSet';
 import 'react-toastify/dist/ReactToastify.css';
  
 
