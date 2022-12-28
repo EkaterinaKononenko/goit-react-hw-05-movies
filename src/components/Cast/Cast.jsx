@@ -1,5 +1,5 @@
 
-import getMovieCredits from 'API/getMovieReviews';
+import getMovieCredits from "API/getMovieCredits";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -7,32 +7,34 @@ import { useParams } from "react-router-dom";
      
 
 const Cast = () => {
-        const { id } = useParams();
-         const [actors, setCast] = useState([]);
+         const { id } = useParams();
+         const [cast, setCast] = useState([])
+         const pathname = 'https://image.tmdb.org/t/p/w500';
          
           useEffect(() => {
             getMovieCredits(id)
-              .then(response => setCast(response.data.cast))
+              .then(response => {
+                setCast(response.cast);
+              })
               .catch(error => {
                 console.log(error);
               });
           }, [id]);
 
-          console.log(actors);
-         if (!actors) {
-           return <p>Sorry, we don't have any information</p>;
-         }
+         console.log(cast);
+
+         if(!cast){return (<p>Sorry, we don't have any review</p>)}
          
        return (
          <div>
            <p>ACTORS</p>
            <ul>
-             {actors.map(({ id, caracter, name, imgUrl }) => {
+             {cast.map(({ id, caracter, name, profile_path }) => {
                return (
                  <li key={id}>
                    <h2>{caracter}</h2>
                    <p>{name}</p>
-                   <img src={imgUrl} alt="actor" />
+                   <img src={pathname + profile_path} alt="actor" />
                  </li>
                );
              })}
@@ -41,6 +43,7 @@ const Cast = () => {
        );
      };
 
-export default Cast;
+     export default Cast;
+
      
  
