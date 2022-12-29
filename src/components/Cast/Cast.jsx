@@ -10,6 +10,7 @@ import {
   ActorCard,
   ActorsWrap,
 } from './Cast.styled';
+import defaultPhoto from 'Image/default_photo.png';
 
      
 
@@ -17,7 +18,6 @@ const Cast = () => {
          const { id } = useParams();
          const [cast, setCast] = useState([])
   const pathname = 'https://image.tmdb.org/t/p/w500';
-  const defaultPhoto = './Image/default_photo.png'
          
           useEffect(() => {
             getMovieCredits(id)
@@ -37,7 +37,7 @@ const Cast = () => {
          <div>
            <ActorsWrap>
              {cast.map(({ id, name, profile_path }) => {
-               const checkPhoto = { profile_path }
+               const checkPhoto = profile_path 
                  ? `${pathname}${profile_path}`
                  : defaultPhoto;
                return (

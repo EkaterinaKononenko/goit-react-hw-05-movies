@@ -20,6 +20,8 @@ export const ActorCard = styled.li`
   margin-bottom: ${props => props.theme.space[4]}px;
   object-fit: cover;
   width: ${props => props.theme.space[8]}px;
+  background-color: ${props => props.theme.colors.background};
+
   &: last-child {
     margin-right: ${props => props.theme.space[0]}px;
   }
@@ -27,8 +29,8 @@ export const ActorCard = styled.li`
   &:hover {
     transform: scale(1.03);
     cursor: zoom-in;
-    outline: ${props => props.theme.borders.heading};
     box-shadow: ${props => props.theme.shadows.boxShadow};
+    border: ${props => props.theme.borders.heading};
   }
 `;
 

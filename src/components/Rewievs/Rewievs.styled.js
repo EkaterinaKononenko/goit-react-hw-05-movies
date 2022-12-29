@@ -35,5 +35,5 @@ export const RewievsContent = styled.li`
 `;
 
 export const RewievsCard = styled.ul`
-  
+  background-color: ${props => props.theme.colors.background};
 `;

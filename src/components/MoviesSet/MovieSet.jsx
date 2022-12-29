@@ -1,16 +1,16 @@
 import MovieItem from "components/MovieItem/MovieItem";
 import PropTypes from 'prop-types';
+import defaultPic from 'Image/default_picture.jpg';
 
 const MovieSet = ({ movies }) => {
-
-  const defaultPic = './Image/default_picture.jpg';
-    const pathname = 'https://image.tmdb.org/t/p/w500';
+  const pathname = 'https://image.tmdb.org/t/p/w500';
   
   return (
     <ul>
       {movies.map(({ id, poster_path, title, vote_average }) => {
-        const checkPic =
-          poster_path !== null ? `${pathname}${poster_path}` : defaultPic;
+           const checkPic = poster_path
+             ? `${pathname}${poster_path}`
+             : defaultPic;
         return (
           <MovieItem
             key={id}
