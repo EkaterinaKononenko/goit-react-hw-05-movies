@@ -1,5 +1,4 @@
 import {
-  NavLink,
   Outlet,
   useParams,
   useNavigate,
@@ -8,6 +7,16 @@ import {
 import getMoviesDetails from 'API/getMoviesDetails';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import {
+  BtnBack,
+  MovieDetailsImg,
+  MovieDetailsTitle,
+  MovieDetailsWrap,
+  MovieDetailsText,
+  NavItem,
+  NavLinkWrap,
+  NavLinkBlock,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -39,25 +48,30 @@ const MovieDetails = () => {
   return (
     <div>
       <div>
-        <button type="button" onClick={onGoBackClick}>
-          GO BACK
-        </button>
+        <BtnBack type="button" onClick={onGoBackClick}>
+          &#11013; GO BACK
+        </BtnBack>
       </div>
-      <div>
-        <img src={pathname + poster_path} alt="movie" />
-      </div>
-      <h1>{title}</h1>
-      <p>vote: {vote}</p>
-      <p>{overview}</p>
-      <p>{genreSet}</p>
-      <ul>
-        <li>
-          <NavLink to="cast">CAST</NavLink>
-        </li>
-        <li>
-          <NavLink to="rewievs">REWIEVS</NavLink>
-        </li>
-      </ul>
+      <MovieDetailsWrap>
+        <MovieDetailsImg>
+          <img src={pathname + poster_path} alt="movie" width='400px' />
+        </MovieDetailsImg>
+        <MovieDetailsText>
+          <MovieDetailsTitle>{title}</MovieDetailsTitle>
+          <p>User score: &#11088; {vote}</p>
+          <p>{overview}</p>
+          <p>{genreSet}</p>
+          <NavLinkBlock>
+            <NavLinkWrap>
+              <NavItem to="cast">&#127871; CAST</NavItem>
+            </NavLinkWrap>
+            <NavLinkWrap>
+              <NavItem to="rewievs">&#127871; REWIEVS</NavItem>
+            </NavLinkWrap>
+          </NavLinkBlock>
+        </MovieDetailsText>
+      </MovieDetailsWrap>
+
       <Outlet />
     </div>
   );

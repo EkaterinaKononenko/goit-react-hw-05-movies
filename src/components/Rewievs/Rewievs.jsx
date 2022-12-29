@@ -4,12 +4,18 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
+import {
+  RewievsAuthor,
+  RewievsContent,
+  RewievsCard,
+} from './Rewievs.styled';
 
      
 
 const Review = () => {
          const { id } = useParams();
-         const [reviews, setReview] = useState([])
+  const [reviews, setReview] = useState([])
+
          
           useEffect(() => {
             getMovieReviews(id)
@@ -26,15 +32,14 @@ const Review = () => {
          
        return (
          <div>
-           <p>REVIEWS</p>
            <div>
              {reviews.map(({ id, author, content }) => {
                return (
                  <div key={id}>
-                   <ul>
-                     <li>{author}</li>
-                     <li>{content}</li>
-                   </ul>
+                   <RewievsCard>
+                     <RewievsAuthor>{author}</RewievsAuthor>
+                     <RewievsContent>{content}</RewievsContent>
+                   </RewievsCard>
                  </div>
                );
              })}

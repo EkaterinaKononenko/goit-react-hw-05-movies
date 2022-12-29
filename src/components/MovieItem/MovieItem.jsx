@@ -1,21 +1,19 @@
 import { useLocation, Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-const MovieItem = ({ id, src, title, vote }) => {
-  const pathname = 'https://image.tmdb.org/t/p/w500';
+const MovieItem = ({ id, checkPic, title, vote }) => {
   const location = useLocation();
- 
 
-    return (
-      <li key={id} title={title}>
-        <Link to={`/movies/${id}`} state={{ from: location }}>
-          <img src={pathname + src} alt={title} width="200" />
-          <h1>{title}</h1>
-        </Link>
-        <p>User score:{vote}</p>
-      </li>
-    );
-}
+  return (
+    <li key={id} title={title}>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
+        <img src={checkPic} alt={title} width="200" />
+        <h1>{title}</h1>
+      </Link>
+      <p>User score: &#11088; {vote}</p>
+    </li>
+  );
+};
 
 export default MovieItem;
 
