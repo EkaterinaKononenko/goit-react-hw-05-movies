@@ -34,6 +34,7 @@ const MovieDetails = () => {
   const { title, vote_average, overview, genres, poster_path } = movie;
   const vote = Math.round(vote_average);
   const genreSet = genres.map(ganre => ganre.name).join(', ');
+  
 
   return (
     <div>
@@ -43,7 +44,7 @@ const MovieDetails = () => {
         </button>
       </div>
       <div>
-        <img src={pathname + poster_path} alt='movie' />
+        <img src={pathname + poster_path} alt="movie" />
       </div>
       <h1>{title}</h1>
       <p>vote: {vote}</p>

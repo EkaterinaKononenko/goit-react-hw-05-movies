@@ -8,7 +8,7 @@ const MovieItem = ({ id, src, title, vote }) => {
     return (
       <li key={id} title={title}>
         <Link to={`/movies/${id}`} state={{ from: location }}>
-          <img src={pathname + src} alt={title} width="10" />
+          <img src={pathname + src} alt={title} width="200" />
           <h1>{title}</h1>
         </Link>
         <p>User score:{vote}</p>
