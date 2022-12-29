@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import MovieSet from 'components/MoviesSet/MovieSet';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import { Formik, Form, Field } from 'formik';
+
  
 
 export const Movies = () => {
@@ -62,19 +64,21 @@ export const Movies = () => {
     <div>
       <ToastContainer />
       <div>Movies</div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Search movie is here
-          <input
-            type="text"
-            placeholder="Search your favorite movie"
-            name="searchMovie"
-            value={query}
-            onChange={handleChange}
-          ></input>
-        </label>
-        <button type="submit">Search</button>
-      </form>
+      <Formik>
+        <Form onSubmit={handleSubmit}>
+          <label>
+            Search movie is here
+            <Field
+              type="text"
+              placeholder="Search your favorite movie"
+              name="searchMovie"
+              value={query}
+              onChange={handleChange}
+            ></Field>
+          </label>
+          <button type="submit">Search</button>
+        </Form>
+      </Formik>
       <MovieSet movies={movies} />
     </div>
   );
