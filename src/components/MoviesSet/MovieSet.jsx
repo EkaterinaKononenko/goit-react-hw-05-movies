@@ -2,14 +2,18 @@ import MovieItem from "components/MovieItem/MovieItem";
 import PropTypes from 'prop-types';
 
 const MovieSet = ({ movies }) => {
+
+  const defaultPic = './Image/default_picture.jpg'
+  
   return (
     <ul>
       {movies.map(({ id, poster_path, title, vote_average }) => {
+        const checkPic = poster_path ? poster_path : defaultPic;
         return (
           <MovieItem
             key={id}
             id={id}
-            src={poster_path}
+            src={checkPic}
             title={title}
             vote={vote_average}
           >

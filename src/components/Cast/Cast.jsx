@@ -10,7 +10,8 @@ import PropTypes from 'prop-types';
 const Cast = () => {
          const { id } = useParams();
          const [cast, setCast] = useState([])
-         const pathname = 'https://image.tmdb.org/t/p/w500';
+  const pathname = 'https://image.tmdb.org/t/p/w500';
+  const defaultPhoto = './Image/default_photo.png'
          
           useEffect(() => {
             getMovieCredits(id)
@@ -31,11 +32,12 @@ const Cast = () => {
            <p>ACTORS</p>
            <ul>
              {cast.map(({ id, caracter, name, profile_path }) => {
+               const checkPhoto = profile_path ? profile_path : defaultPhoto;
                return (
                  <li key={id}>
                    <h2>{caracter}</h2>
                    <p>{name}</p>
-                   <img src={pathname + profile_path} alt="actor" />
+                   <img src={pathname + checkPhoto} alt="actor" />
                  </li>
                );
              })}

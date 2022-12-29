@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const MovieItem = ({ id, src, title, vote }) => {
   const pathname = 'https://image.tmdb.org/t/p/w500';
   const location = useLocation();
+ 
 
     return (
       <li key={id} title={title}>
