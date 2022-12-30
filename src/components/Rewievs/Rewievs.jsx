@@ -9,6 +9,7 @@ import {
   RewievsContent,
   RewievsCard,
 } from './Rewievs.styled';
+import { ToastContainer, toast } from 'react-toastify';
 
      
 
@@ -20,7 +21,14 @@ const Review = () => {
           useEffect(() => {
             getMovieReviews(id)
               .then(response => {
-                setReview(response.results);
+                setReview(response.results);  
+                if (response.results.length === 0) {
+                 return toast.info("Sorry, we don't have any review.", {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    theme: 'colored',
+                  });
+                }
               }).catch(error => {
                 console.log(error);
               })
@@ -28,24 +36,23 @@ const Review = () => {
 
          console.log(reviews);
             
-         if (!reviews) {
-           return <p>Sorry, we don't have any review</p>;
-         }              
+                    
          
        return (
          <div>
-             <div>
-               {reviews.map(({ id, author, content }) => {
-                 return (
-                   <div key={id}>
-                     <RewievsCard>
-                       <RewievsAuthor>{author}</RewievsAuthor>
-                       <RewievsContent>{content}</RewievsContent>
-                     </RewievsCard>
-                   </div>
-                 );
-               })}
-             </div>
+           <ToastContainer />
+           <div>
+             {reviews.map(({ id, author, content }) => {
+               return (
+                 <div key={id}>
+                   <RewievsCard>
+                     <RewievsAuthor>{author}</RewievsAuthor>
+                     <RewievsContent>{content}</RewievsContent>
+                   </RewievsCard>
+                 </div>
+               );
+             })}
+           </div>
          </div>
        );
      };
