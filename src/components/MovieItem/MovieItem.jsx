@@ -1,18 +1,24 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
+import {
+  MovieItemCard,
+  MovieItemTitle,
+  MovieItemScore,
+  MovieItemLink,
+} from './MovieItem.styled';
 
 
 const MovieItem = ({ id, src, title, vote }) => {
   const location = useLocation();
 
   return (
-    <li key={id} title={title}>
-      <Link to={`/movies/${id}`} state={{ from: location }}>
-        <img src={src} alt={title} width="200" />
-        <h1>{title}</h1>
-      </Link>
-      <p>User score: &#11088; {vote}</p>
-    </li>
+    <MovieItemCard key={id} title={title}>
+      <MovieItemLink to={`/movies/${id}`} state={{ from: location }}>
+        <img src={src} alt={title} width="250" height="350" />
+        <MovieItemTitle>{title}</MovieItemTitle>
+      </MovieItemLink>
+      <MovieItemScore>User score: &#11088; {Math.round(vote)}</MovieItemScore>
+    </MovieItemCard>
   );
 };
 

@@ -7,7 +7,10 @@ import MovieSet from 'components/MoviesSet/MovieSet';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import { FormWrap, Input, Label, BtnSearch } from './Movies.styled';
+import { FormWrap, Input, BtnSearch } from './Movies.styled';
+import  SharedLayout  from 'components/SharedLayout/SharedLayout';
+
+
 
  
 
@@ -63,10 +66,11 @@ export const Movies = () => {
 
   return (
     <div>
+      <SharedLayout/>
       <ToastContainer />
       <Formik>
         <FormWrap onSubmit={handleSubmit}>
-          <Label>
+          <label>
             <Input
               type="text"
               placeholder="Search your favorite movie"
@@ -74,7 +78,7 @@ export const Movies = () => {
               value={query}
               onChange={handleChange}
             ></Input>
-          </Label>
+          </label>
           <BtnSearch type="submit">Search</BtnSearch>
         </FormWrap>
       </Formik>

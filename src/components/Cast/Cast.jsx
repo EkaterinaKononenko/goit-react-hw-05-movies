@@ -12,6 +12,7 @@ import {
 } from './Cast.styled';
 import defaultPhoto from 'Image/default_photo.png';
 
+
      
 
 const Cast = () => {
@@ -31,23 +32,26 @@ const Cast = () => {
 
          console.log(cast);
 
-         if(!cast){return (<p>Sorry, we don't have any informations</p>)}
+              if (!cast) {
+                return (<p>Sorry, we don't have any informations</p>);
+              }
+  
          
        return (
          <div>
-           <ActorsWrap>
-             {cast.map(({ id, name, profile_path }) => {
-               const checkPhoto = profile_path 
-                 ? `${pathname}${profile_path}`
-                 : defaultPhoto;
-               return (
-                 <ActorCard key={id}>
-                   <ActorImg src={checkPhoto} alt="actor" />
-                   <ActorName>{name}</ActorName>
-                 </ActorCard>
-               );
-             })}
-           </ActorsWrap>
+             <ActorsWrap>
+               {cast.map(({ id, name, profile_path }) => {
+                 const checkPhoto = profile_path
+                   ? `${pathname}${profile_path}`
+                   : defaultPhoto;
+                 return (
+                   <ActorCard key={id}>
+                     <ActorImg src={checkPhoto} alt="actor" />
+                     <ActorName>{name}</ActorName>
+                   </ActorCard>
+                 );
+               })}
+             </ActorsWrap>
          </div>
        );
      };

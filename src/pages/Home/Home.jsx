@@ -5,7 +5,7 @@ import MovieSet from 'components/MoviesSet/MovieSet';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
-import { HomePage } from "./Home.styled";
+import { HomePage, HomepageTitle } from './Home.styled';
 
  
 
@@ -35,7 +35,7 @@ const Home = () => {
     <main>
       <HomePage>
         <ToastContainer />
-        <div>Trending today</div>
+        <HomepageTitle>Trending today</HomepageTitle>
         <MovieSet movies={movies} />
       </HomePage>
     </main>
