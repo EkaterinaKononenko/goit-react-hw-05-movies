@@ -12,19 +12,21 @@ import {
 } from './Cast.styled';
 import defaultPhoto from 'Image/default_photo.png';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from "components/Spinner/Spinner";
 
 
      
 
 const Cast = () => {
-         const { id } = useParams();
-         const [cast, setCast] = useState([])
+  const { id } = useParams();
+  const [cast, setCast] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
   const pathname = 'https://image.tmdb.org/t/p/w500';
          
-          useEffect(() => {
+  useEffect(() => {
+    setIsLoading(true);
             getMovieCredits(id)
               .then(response => {
-                setCast(response.cast);
                 if (response.cast.length === 0) {
                   return toast.info("Sorry, we don't have any informations.", {
                     position: 'top-right',
@@ -32,10 +34,13 @@ const Cast = () => {
                     theme: 'colored',
                   });
                 }
+                setCast(response.cast);
+                setIsLoading(false);
               })
               .catch(error => {
                 console.log(error);
-              });
+                setIsLoading(false);
+              })
           }, [id]);
 
          console.log(cast);
@@ -57,6 +62,7 @@ const Cast = () => {
                );
              })}
            </ActorsWrap>
+           {isLoading && <Spinner/>}
          </div>
        );
      };

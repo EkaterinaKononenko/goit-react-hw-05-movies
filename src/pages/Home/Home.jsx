@@ -6,13 +6,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 import { HomePage, HomepageTitle } from './Home.styled';
+import Spinner from "components/Spinner/Spinner";
 
  
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getMovieTranding()
       .then(response => {
         if (response.results.length === 0) {
@@ -23,10 +26,12 @@ const Home = () => {
           });
         }
         setMovies(response.results);
+        setIsLoading(false);
       })
       .catch(error => {
         console.log(error);
-      });
+        setIsLoading(false);
+      })
   }, []);
 
   console.log(movies)
@@ -38,6 +43,7 @@ const Home = () => {
         <HomepageTitle>Trending today</HomepageTitle>
         <MovieSet movies={movies} />
       </HomePage>
+      {isLoading && <Spinner />}
     </main>
   );
 }

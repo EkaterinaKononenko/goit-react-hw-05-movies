@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { FormWrap, Input, BtnSearch } from './Movies.styled';
 import  SharedLayout  from 'components/SharedLayout/SharedLayout';
-
+import Spinner from 'components/Spinner/Spinner';
 
 
  
@@ -18,12 +18,15 @@ export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log(movies);
 
   
   useEffect(() => {
+    setIsLoading(true);
     if (searchParams.get('searchMovie') === null) {
+      setIsLoading(false);
       return;
     }
     const searchRes = searchParams.get('searchMovie');
@@ -37,9 +40,11 @@ export const Movies = () => {
           });
         }
         setMovies(response.results);
+        setIsLoading(false);
       })
       .catch(error => {
         console.log(error);
+        setIsLoading(false);
       });
   }, [query, searchParams])
 
@@ -66,7 +71,7 @@ export const Movies = () => {
 
   return (
     <div>
-      <SharedLayout/>
+      <SharedLayout />
       <ToastContainer />
       <Formik>
         <FormWrap onSubmit={handleSubmit}>
@@ -82,6 +87,7 @@ export const Movies = () => {
           <BtnSearch type="submit">Search</BtnSearch>
         </FormWrap>
       </Formik>
+      {isLoading && <Spinner />}
       <MovieSet movies={movies} />
     </div>
   );

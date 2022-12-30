@@ -18,19 +18,24 @@ import {
   NavLinkBlock,
 } from './MovieDetails.styled';
 import defaultPic from 'Image/default_picture.jpg';
+import Spinner from 'components/Spinner/Spinner';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = 'https://image.tmdb.org/t/p/w500';
 
   useEffect(() => {
+    setIsLoading(true);
     getMoviesDetails(id)
-      .then(setMovie)
+      .then(setMovie).then(setIsLoading(false))
       .catch(error => {
         console.log(error);
+        setIsLoading(false);
       });
   }, [id]);
 
@@ -72,7 +77,7 @@ const MovieDetails = () => {
           </NavLinkBlock>
         </MovieDetailsText>
       </MovieDetailsWrap>
-
+     {isLoading && <Spinner/>}
       <Outlet />
     </div>
   );

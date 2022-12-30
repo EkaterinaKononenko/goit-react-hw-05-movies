@@ -10,27 +10,32 @@ import {
   RewievsCard,
 } from './Rewievs.styled';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from "components/Spinner/Spinner";
 
      
 
 const Review = () => {
   const { id } = useParams();
   const [reviews, setReview] = useState([])
-
+  const [isLoading, setIsLoading] = useState(false);
          
-          useEffect(() => {
+  useEffect(() => {
+    setIsLoading(true);
             getMovieReviews(id)
               .then(response => {
-                setReview(response.results);  
+                setIsLoading(false);
                 if (response.results.length === 0) {
-                 return toast.info("Sorry, we don't have any review.", {
+                  return toast.info("Sorry, we don't have any review.", {
                     position: 'top-right',
                     autoClose: 3000,
                     theme: 'colored',
                   });
                 }
-              }).catch(error => {
+                setReview(response.results);
+              })
+              .catch(error => {
                 console.log(error);
+                setIsLoading(false);
               })
           }, [id]);
 
@@ -53,6 +58,7 @@ const Review = () => {
                );
              })}
            </div>
+           {isLoading && <Spinner />}
          </div>
        );
      };

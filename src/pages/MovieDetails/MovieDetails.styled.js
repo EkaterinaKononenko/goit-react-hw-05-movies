@@ -30,7 +30,7 @@ export const MovieDetailsTitle = styled.h1`
 `;
 
 
-export const MovieDetailsWrap= styled.div`
+export const MovieDetailsWrap = styled.div`
  display: flex;
 `;
 
