@@ -17,6 +17,7 @@ import {
   NavLinkWrap,
   NavLinkBlock,
 } from './MovieDetails.styled';
+import defaultPic from 'Image/default_picture.jpg';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -43,7 +44,7 @@ const MovieDetails = () => {
   const { title, vote_average, overview, genres, poster_path } = movie;
   const vote = Math.round(vote_average);
   const genreSet = genres.map(ganre => ganre.name).join(', ');
-  
+   const checkPic = poster_path ? `${pathname}${poster_path}` : defaultPic;
 
   return (
     <div>
@@ -54,7 +55,7 @@ const MovieDetails = () => {
       </div>
       <MovieDetailsWrap>
         <MovieDetailsImg>
-          <img src={pathname + poster_path} alt="movie" width='400px' />
+          <img src={checkPic} alt="movie" width="400px" heigth=""/>
         </MovieDetailsImg>
         <MovieDetailsText>
           <MovieDetailsTitle>{title}</MovieDetailsTitle>
