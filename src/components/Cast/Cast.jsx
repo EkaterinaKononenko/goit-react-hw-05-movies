@@ -51,7 +51,7 @@ const Cast = () => {
                  : defaultPhoto;
                return (
                  <ActorCard key={id}>
-                   <ActorImg src={checkPhoto} alt="actor" />
+                   <ActorImg src={checkPhoto} alt="actor"  />
                    <ActorName>{name}</ActorName>
                  </ActorCard>
                );

@@ -5,11 +5,14 @@ export const ActorName = styled.h2`
   font-family: 'Sevillana', cursive;
   text-align: center;
   color: ${props => props.theme.colors.primary};
+
 `;
 
 
 export const ActorImg = styled.img`
-  width: ${props => props.theme.space[8]}px;
+  width:250px;
+  height: 306px;
+  object-fit: cover;
 `;
 
 export const ActorCard = styled.li`
@@ -21,6 +24,8 @@ export const ActorCard = styled.li`
   object-fit: cover;
   width: ${props => props.theme.space[8]}px;
   background-color: ${props => props.theme.colors.background};
+  position: relative;
+
 
   &: last-child {
     margin-right: ${props => props.theme.space[0]}px;
@@ -36,5 +41,6 @@ export const ActorCard = styled.li`
 
 export const ActorsWrap = styled.ul`
 display: flex;
-flex-wrap: wrap;`
+flex-wrap: wrap;
+`
 
