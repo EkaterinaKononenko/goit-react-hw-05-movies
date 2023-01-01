@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   height: 60px;
-  width: 1600px;
+  width: 100%;
   padding-top: 20px; 
   background-color: ${props => props.theme.colors.thirdBackground};
   top: 0;
