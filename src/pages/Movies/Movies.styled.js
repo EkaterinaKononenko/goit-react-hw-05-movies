@@ -5,8 +5,7 @@ export const FormWrap = styled(Form)`
 padding-top: 90px;
 align-item: center;
 justify-content: center;
-flex-wrap: nowrap;
-`;
+flex-wrap: nowrap;`;
 
 export const Input = styled(Field)`
   width: 500px;

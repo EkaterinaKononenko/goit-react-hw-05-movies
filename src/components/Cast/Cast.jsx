@@ -27,6 +27,7 @@ const Cast = () => {
     setIsLoading(true);
             getMovieCredits(id)
               .then(response => {
+                setIsLoading(false);
                 if (response.cast.length === 0) {
                   return toast.info("Sorry, we don't have any informations.", {
                     position: 'top-right',
@@ -34,8 +35,8 @@ const Cast = () => {
                     theme: 'colored',
                   });
                 }
-                setCast(response.cast);
-                setIsLoading(false);
+               setCast(response.cast);
+                
               })
               .catch(error => {
                 console.log(error);
